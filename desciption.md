@@ -7,3 +7,4 @@
 7. create input form for user in E:\xampp\htdocs\myproj_laravel\resources\views.
 8. create route for submitting form and add controller.
 9. create controller and add CRUD function.
+10. create request validation file
