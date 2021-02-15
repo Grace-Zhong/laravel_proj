@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class RequestValidation extends FormRequest
 {
@@ -13,7 +15,7 @@ class RequestValidation extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;    // Important! Change to true.
     }
 
     /**
@@ -26,13 +28,30 @@ class RequestValidation extends FormRequest
         return [
             'Date' => ['required', 'max:255'],
             'Gender' => ['required', 'max:255', 'string'],
-            'Type' => ['required', 'max:255'],
-            'Ranking' => ['integer', 'max:255'],
+            'Type' => ['required', 'string','max:255'],
             'Player' => ['required', 'string', 'max:50'],
-            'Country' => ['required', 'string', 'max:255'],
+            'Country' => ['required', 'string', 'max:100'],
             'Age' => ['required','integer', 'max:120', 'min:0'],
-            'Points' => ['required','numeric', 'max:255'],
-            'Tournaments' => ['required','numeric', 'max:255'],
+            'Points' => ['required','numeric', 'max:100'],
+            'Tournaments' => ['required','numeric', 'max:100'],
         ];
     }
+
+    // public function messages()
+    // {
+    //     return [
+    //         'Date.required' =>'Date cannot be empty.',
+    //     ];
+    // }
+
+    public function failedValidation(Validator $validator)
+    {
+        throw (new HttpResponseException(response()->json([
+            'status_code' => 500,
+            'message' => 'request error',
+            'data' => $validator->errors()->first(),
+        ], 200)));
+    }
 }
+
+
