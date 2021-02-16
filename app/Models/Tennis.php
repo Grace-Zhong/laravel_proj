@@ -13,4 +13,5 @@ class Tennis extends Model
     // protected $priKey = 'Ranking';
     public $timestamps = false;
     protected $fillable = ['Date','Gender','Type','Ranking','Player','Country','Age','Points','Tournaments'];
+
 }

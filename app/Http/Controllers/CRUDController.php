@@ -44,7 +44,7 @@ class CRUDController extends Controller
 
     // pagination
     public function page(){
-        $data = Tennis::paginate(5);
+        $data = Tennis::orderBy('Tournaments','ASC') -> paginate(10);
         return view('page',compact('data'));  
     }
 }
