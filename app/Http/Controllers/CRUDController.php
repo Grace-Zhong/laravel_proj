@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tennis;
+use App\Models\User;
 
 class CRUDController extends Controller
 {
@@ -39,5 +40,11 @@ class CRUDController extends Controller
 
     public function delete(Request $request){
         $res = Tennis::where("Date","=",null) -> delete();
+    }
+
+    // pagination
+    public function page(){
+        $data = Tennis::paginate(5);
+        return view('page',compact('data'));  
     }
 }

@@ -49,7 +49,7 @@ class RequestValidation extends FormRequest
         throw (new HttpResponseException(response()->json([
             'status_code' => 500,
             'message' => 'request error',
-            'data' => $validator->errors()->first(),
+            'data' => $validator->errors()->all(),
         ], 200)));
     }
 }
