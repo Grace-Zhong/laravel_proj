@@ -26,11 +26,9 @@ class RequestValidation extends FormRequest
     public function rules()
     {
         return [
-            'Date' => ['required', 'max:255'],
-            'Gender' => ['required', 'max:255', 'string'],
-            'Type' => ['required', 'string','max:255'],
+            'Date' => [ 'max:255'],
             'Player' => ['required', 'string', 'max:50'],
-            'Country' => ['required', 'string', 'max:100'],
+            'Country' => ['required','string', 'max:100'],
             'Age' => ['required','integer', 'max:120', 'min:0'],
             'Points' => ['required','numeric', 'max:100'],
             'Tournaments' => ['required','numeric', 'max:100'],

@@ -14,9 +14,10 @@
 
 ## Add & Request Validation
 1. Visit website http://127.0.0.1:8003/home/form. <br>
-2. Fill in the blank.<br>
-Request validation: "Date" cannot be empty.<br>
-If Date is empty, it will show "{"status_code":500,"message":"request error","data":["The date field is required."]}". <br>
+2. Fill in the form.<br>
+Request validation:   
+Player, Country, Age, Points, Tournaments cannot be empty. <br><br>
+If request is invalid, it will show "{"status_code":500,"message":"request error","data":["invalid information"]}". <br>
 If request is valid, it will show "success!". 
 ```php
     public function showForm(){
