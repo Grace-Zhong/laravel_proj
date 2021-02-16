@@ -15,8 +15,20 @@
 ## Add & Request Validation
 1. Visit website http://127.0.0.1:8003/home/form. <br>
 2. Fill in the form.<br>
-Request validation:   
-Player, Country, Age, Points, Tournaments cannot be empty. <br><br>
+Following are rules for request validation.  
+```php
+    public function rules()
+    {
+        return [
+            'Date' => [ 'max:255'],
+            'Player' => ['required', 'string', 'max:50'],
+            'Country' => ['required','string', 'max:100'],
+            'Age' => ['required','integer', 'max:120', 'min:0'],
+            'Points' => ['required','numeric', 'max:100'],
+            'Tournaments' => ['required','numeric', 'max:100'],
+        ];
+    }
+```
 If request is invalid, it will show "{"status_code":500,"message":"request error","data":["invalid information"]}". <br>
 If request is valid, it will show "success!". 
 ```php
