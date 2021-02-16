@@ -14,24 +14,15 @@ class CRUDController extends Controller
 
     public function add(\App\Http\Requests\RequestValidation $request){
         $validated = $request->validated();
-        
-        // $validatedData = $request->validate([
-        //     'Date' => ['required', 'max:255'],
-        //     'Gender' => ['required', 'max:255', 'string'],
-        //     'Type' => ['required', 'string','max:255'],
-        //     'Player' => ['required', 'string', 'max:50'],
-        //     'Country' => ['required', 'string', 'max:100'],
-        //     'Age' => ['required','integer', 'max:120', 'min:0'],
-        //     'Points' => ['required','numeric', 'max:100'],
-        //     'Tournaments' => ['required','numeric', 'max:100'],
-        // ]);
         $model = new Tennis();
         $res = $model::create($request -> all());
+        echo 'success!';
     } 
 
     public function search(Request $request){
         // search "name"="ggg" method 2
-        $res = Tennis::where("Ranking","=","1") -> get();
+        $res = Tennis::where("Ranking","=","10") -> get();
+        var_dump($res);
     }
 
     public function update(Request $request){
