@@ -62,10 +62,10 @@ If request is valid, it will show "success!".
 ```
 
 # Pagination & Order
-1. Create php file called Page in myproj_laravel\resources\views.
-2. Edit this file to show all data in database.
+1. Create php file called "Page" in myproj_laravel\resources\views.
+2. Edit this file to show all data which exists in database.
 3. Create route for this page. Address: http://127.0.0.1:8003/home/page.
-4. Add a function in controller. This function will show 10 result in each page, and order by "Tournaments" in ascending order.
+4. Add a function in controller. This function will show 10 results in each page, and order by "Tournaments" in ascending order.
 ```php
     public function page(){
         $data = Tennis::orderBy('Tournaments','ASC') -> paginate(10);
